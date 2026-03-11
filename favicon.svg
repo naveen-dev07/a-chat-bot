@@ -1,19 +1,21 @@
 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="moonGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="3.5" result="coloredBlur"/>
+    <filter id="crescentGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
       <feMerge>
-        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
 
-    <linearGradient id="arcticGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="lumiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#ffffff; stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#b0ddef; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a5d8ff; stop-opacity:1" />
     </linearGradient>
   </defs>
 
-  <circle cx="50" cy="50" r="40" fill="url(#arcticGradient)" filter="url(#moonGlow)" />
-
-  </svg>
+  <path d="M50 20 A30 30 0 1 0 80 50 A25 25 0 1 1 50 20" 
+        fill="url(#lumiGrad)" 
+        filter="url(#crescentGlow)" 
+        transform="rotate(-15, 50, 50)" />
+</svg>
