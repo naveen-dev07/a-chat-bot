@@ -67,13 +67,14 @@ body.dark .input-bar {
   border-color: hsl(0 0% 100% / 0.15);
 }
 
-body.dark .input-bar input {
+body.dark .input-bar textarea {
   color: hsl(0 0% 90%);
 }
 
-body.dark .input-bar input::placeholder {
+body.dark .input-bar textarea::placeholder {
   color: hsl(0 0% 60%);
 }
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; font-weight: 700; }
 
 :root {
@@ -109,7 +110,6 @@ body {
   font-weight: 700;
 }
 
-
 .spark {
   position: absolute;
   width: 10px; height: 10px;
@@ -123,9 +123,6 @@ body {
   40%  { transform: scale(2); opacity: 1; }
   100% { transform: scale(1); opacity: 1; }
 }
-
-
-
 
 .intro-overlay {
   position: absolute;
@@ -207,10 +204,6 @@ header {
   animation: none; 
 }
 @keyframes type-name {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0% 0 0); }
-}
-@keyframes type-name {
   from { transform: translateX(-100%); opacity: 0; }
   to   { transform: translateX(0); opacity: 1; }
 }
@@ -284,6 +277,7 @@ header {
   stroke-width: 1.5;
   fill: none;
 }
+
 /* ── MAIN STAGE ── */
 main {
   flex: 1;
@@ -291,7 +285,6 @@ main {
   align-items: center;
   justify-content: center;
   padding: 0.5rem 1.5rem 2rem;
-  
 }
 
 /* ── RIBBON CARD ── */
@@ -306,7 +299,7 @@ main {
 }
 
 .ribbon-card {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
   position: relative;
   width: 100%;
   max-width: 44rem;
@@ -392,9 +385,9 @@ main {
   line-height: 1.65;
   color: var(--dark);
   font-weight: 600;
-   word-wrap: break-word;     
-  word-break: break-word;     
-  overflow-wrap: break-word; 
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
   white-space: pre-wrap;
 }
 .bubble.incoming {
@@ -430,14 +423,16 @@ main {
 .input-bar {
   margin-top: 1rem;
   display: flex;
-  align-items: center;
+  align-items: flex-end;   /* CHANGED: center → flex-end so button stays at bottom */
   gap: 0.75rem;
-  border-radius: 9999px;
+  border-radius: 1.25rem;  /* CHANGED: pill → slightly rounded for textarea */
   padding: 0.55rem 0.55rem 0.55rem 1.25rem;
   background: hsl(0 0% 100% / 0.35);
   border: 1px solid hsl(0 0% 100% / 0.5);
 }
-.input-bar input {
+
+/* CHANGED: input → textarea */
+.input-bar textarea {
   flex: 1;
   background: transparent;
   border: none;
@@ -446,8 +441,15 @@ main {
   font-family: var(--font-body);
   font-weight: 600;
   color: var(--dark);
+  resize: none;
+  overflow: hidden;
+  max-height: 120px;
+  line-height: 1.5;
+  padding: 0;
+  /* vertically center single line text */
+  padding-top: 0.35rem;
 }
-.input-bar input::placeholder { color: hsl(264 10% 50%); }
+.input-bar textarea::placeholder { color: hsl(264 10% 50%); }
 
 @keyframes send-pulse {
   0%,100% { box-shadow: 0 0 0 0 hsl(197 65% 72% / 0.45); }
@@ -480,19 +482,8 @@ main {
 
 /* ── RESPONSIVE MOBILE ── */
 @media (max-width: 768px) {
-  /* Purana — hata do ye sab */
   .header-controls {
-    position: fixed;
-    bottom: 1.25rem;
-    right: 1.25rem;
-    flex-direction: column;
-    gap: 0.5rem;
-    z-index: 100;
-  }
-
-  /* Naya — ye daalo */
-  .header-controls {
-    position: static;  /* fixed nahi, normal flow mein */
+    position: static;
     flex-direction: row;
     gap: 0.4rem;
   }
@@ -503,6 +494,7 @@ main {
     border: none;
   }
 }
+
 /* ── DARK MODE ── */
 body.dark .mesh-background {
   background:
@@ -532,11 +524,11 @@ body.dark .input-bar {
   border-color: hsl(0 0% 100% / 0.15);
 }
 
-body.dark .input-bar input {
+body.dark .input-bar textarea {
   color: hsl(0 0% 90%);
 }
 
-body.dark .input-bar input::placeholder {
+body.dark .input-bar textarea::placeholder {
   color: hsl(0 0% 60%);
 }
 
@@ -547,6 +539,7 @@ body.dark .tagline {
 body.dark .glass-icon svg {
   stroke: hsl(0 0% 80% / 0.8);
 }
+
 .sun-icon {
   animation: sun-spin 8s linear infinite;
   transform-origin: center;
@@ -556,6 +549,7 @@ body.dark .glass-icon svg {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
+
 @keyframes app-reveal {
   from { 
     clip-path: circle(3% at 50% 50%);
