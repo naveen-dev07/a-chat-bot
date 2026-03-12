@@ -139,7 +139,8 @@
       <div class="card-inner">
         <div class="messages" id="messages"></div>
         <div class="input-bar">
-          <input type="text" id="msgInput" placeholder="Message..." autocomplete="off" />
+          <!-- CHANGED: input → textarea for text wrapping -->
+          <textarea id="msgInput" placeholder="Message..." autocomplete="off" rows="1"></textarea>
           <button class="action-btn" id="actionBtn">
             <svg id="micIcon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
               <rect x="9" y="2" width="6" height="11" rx="3"/>
