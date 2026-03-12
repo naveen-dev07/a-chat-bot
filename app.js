@@ -122,12 +122,12 @@ async function speakChunk(text) {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${GROQ_API_KEY}`
     },
-    body: JSON.stringify({
-      model: 'playai-tts',
-      input: text,
-      voice: 'Aaliya-PlayAI',
-      response_format: 'wav'
-    })
+  body: JSON.stringify({
+  model: 'canopylabs/orpheus-v1-english', 
+  input: text,
+  voice: 'hannah',                          
+  response_format: 'wav'
+})
   });
   if (!res.ok) {
     const errText = await res.text();
