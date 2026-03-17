@@ -1,4 +1,4 @@
-const GROQ_API_KEY   = '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';
+const GROQ_API_KEY   = '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';
 const GROQ_MODEL     = 'llama-3.3-70b-versatile';
 const TAVILY_API_KEY = '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';
 
